@@ -15,7 +15,7 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->text('detail');
+            $table->longText('detail');
             $table->enum('type',['omr','descriptive'])->default('descriptive');
             $table->timestamps();
         });
