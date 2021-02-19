@@ -4,6 +4,8 @@
     <script>
         CKEDITOR.replace( 'editor', {
             enterMode : CKEDITOR.ENTER_BR,
+            filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
         });
     </script>
 @endpush
