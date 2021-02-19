@@ -19,9 +19,10 @@ class QuestionController extends Controller
     }
     public function store(Request $request)
     {
+//        print_r($request->all());exit;
         Question::create($request->all());
-        return redirect({{route('question.list');
-		
+        return redirect()->route('question.list');
+
     }
     public function edit(Request $request, $id)
     {

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\CkeditorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,6 @@ Route::post('/question/store', [QuestionController::class, 'store'])->name('ques
 Route::get('/question/edit/{id}', [QuestionController::class, 'edit'])->name('question.edit');
 Route::put('/question/update/{id}', [QuestionController::class, 'update'])->name('question.update');
 Route::delete('/question/delete/{id}', [QuestionController::class, 'delete'])->name('question.delete');
+
+Route::post('ckeditor/upload', [CkeditorController::class, 'upload'])->name('ckeditor.upload');
 

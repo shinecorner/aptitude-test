@@ -1,21 +1,35 @@
 @extends('layout')
+@push('custom-scripts')
+    <script src="{{asset('vendor/ckeditor/ckeditor.js')}}"></script>
+    <script>
+        CKEDITOR.replace( 'editor', {
+            enterMode : CKEDITOR.ENTER_BR,
+        });
+    </script>
+@endpush
 @section('content')
-<form method="post" action="{{url('question/store')}}">
-    @csrf
-    <div class="form-group">
-        <label for="detail">Question Detail:</label>
-        <input type="text" class="form-control" id="detail" name="detail" placeholder="Enter Detail">
+    <div class="container-fluid">
+        <h1 class="h3 mb-2 text-gray-800">Insert Question</h1>
+        <form method="post" action="{{url('question/store')}}">
+            @csrf
+            <div class="form-group">
+                <label for="detail">Question Detail:</label>
+                <textarea name="detail" id="editor">
+
+                </textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="type">Type</label>
+                <select class="form-control" id="type" name="type">
+                    <option value="select"> select </option>
+                    <option value="omr"> Omr </option>
+                    <option value="descriptive">Descriptive</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
 
-    <div class="form-group">
-        <label for="type">Type</label>
-        <select class="form-control" id="type" name="type">
-            <option value="select"> select </option>
-            <option value="omr"> Omr </option>
-            <option value="descriptive">Descriptive</option>
-        </select>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
 @stop
