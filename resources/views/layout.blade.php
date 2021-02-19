@@ -5,7 +5,7 @@
 
     @include('includes.head')
     @stack('custom-styles')
-    @stack('custom-scripts')
+    
 
 </head>
 
@@ -76,7 +76,7 @@
 </div>
 
 @include('includes.footer')
-
+@stack('custom-scripts')
 
 </body>
 

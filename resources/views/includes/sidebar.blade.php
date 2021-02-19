@@ -30,7 +30,7 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{route('question.list')}}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Questions</span></a>
     </li>
