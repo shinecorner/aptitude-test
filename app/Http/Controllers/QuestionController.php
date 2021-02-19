@@ -20,7 +20,8 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         Question::create($request->all());
-        return redirect('question/list');
+        return redirect({{route('question.list');
+		
     }
     public function edit(Request $request, $id)
     {
