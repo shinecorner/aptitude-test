@@ -37,30 +37,33 @@
                 <table class="table table-bordered" width="100%" cellspacing="0" id="questionList">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Detail</th>
-                            <th>Type</th>
-                            <th>Update</th>
-                            <th>Actions</th>
+                            <th width="70%">Detail</th>
+                            <th width="10%">Type</th>
+                            <th width="15%">Actions</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         @foreach($records as $record)
                         <tr>
-                            <td>{{$record->id}}</td>
-                            <td>{{$record->detail}}</td>
+                            <td>{!! $record->detail !!}</td>
                             <td>{{$record->type}}</td>
-                            <td>
-                                <a href="{{route('question.edit',['id' => $record->id])}}" class="btn btn-primary">Edit</a>
 
-                            </td>
                             <td>
-                                <form action="{{ route('question.delete',['id' => $record->id]) }}" method="post">
-                                    <input class="btn btn-danger" type="submit" value="Delete" />
-                                    @method('delete')
-                                    @csrf
-                                </form>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="{{route('question.edit',['id' => $record->id])}}">Edit</a>
+                                        <form action="{{ route('question.delete',['id' => $record->id]) }}" method="post">
+                                            <button class="dropdown-item" type="submit">Delete</button>
+                                            @method('delete')
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </div>
+
                             </td>
                         </tr>
                         @endforeach
