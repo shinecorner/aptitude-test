@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreQuestionRequest;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Question;
@@ -17,29 +18,30 @@ class QuestionController extends Controller
     {
         return view('question.insert');
     }
-    public function store(Request $request)
+    public function store(StoreQuestionRequest $request)
     {
 //        print_r($request->all());exit;
+        $validated = $request->validated();
         Question::create($request->all());
         return redirect()->route('question.list');
 
     }
-    public function edit(Request $request, $id)
+    public function edit(Request $request, Question $question)
     {
-        $record = Question::find($id);
-        return view('question.edit', compact('record'));
+        // $record = Question::find($id);
+        return view('question.edit', ['record' => $question]);
     }
-    public function update(Request $request, $id)
+    public function update(Request $request, Question $question)
     {
-        Question::find($id)->update([
+        $question->update([
             'detail' => $request->get('detail'),
             'type' => $request->get('type')
         ]);
         return redirect('question/list');
     }
-    public function delete(Request $request, $id)
+    public function delete(Request $request, Question $question)
     {
-        Question::where('id', $id)->delete();
+        $question->delete();
         return redirect('question/list');
     }
 }

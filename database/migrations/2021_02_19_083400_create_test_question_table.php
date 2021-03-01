@@ -23,7 +23,6 @@ class CreateTestQuestionTable extends Migration
             $table->foreign('question_id')->references('id')->on('questions')->onUpdate('cascade')
                 ->onDelete('cascade');
 
-
             $table->timestamps();
         });
     }

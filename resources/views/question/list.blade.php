@@ -55,8 +55,8 @@
                                         Action
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{{route('question.edit',['id' => $record->id])}}">Edit</a>
-                                        <form action="{{ route('question.delete',['id' => $record->id]) }}" method="post">
+                                        <a class="dropdown-item" href="{{route('question.edit',['question' => $record->id])}}">Edit</a>
+                                        <form action="{{ route('question.delete',['question' => $record->id]) }}" method="post">
                                             <button class="dropdown-item" type="submit">Delete</button>
                                             @method('delete')
                                             @csrf

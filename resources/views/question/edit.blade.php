@@ -12,12 +12,12 @@
 @section('content')
     <div class="container-fluid">
         <h1 class="h3 mb-2 text-gray-800">Edit Question</h1>
-        <form method="post" action="{{route('question.update',['id' => $record->id])}}">
+        <form method="post" action="{{route('question.update',['question' => $record->id])}}">
             <input type="hidden" name="_method" value="PUT">
             @csrf
             <div class="form-group">
                 <label for="detail">Question Detail:</label>
-                <textarea name="detail" id="editor">{{$record->detail}}</textarea>
+                {{Form::textarea('detail', $record->detail, ['id' => 'editor','class'=>'form-control','name' => 'detail'])}}
             </div>
 
             <div class="form-group">

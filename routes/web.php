@@ -18,14 +18,14 @@ use App\Http\Controllers\CkeditorController;
 Route::get('/', function () {
     return view('dashboard');
 });
+Route::prefix('question')->name('question.')->group(function () {
+    Route::get('list', [QuestionController::class, 'list'])->name('list');
+    Route::get('insert', [QuestionController::class, 'insert'])->name('insert');
+    Route::post('store', [QuestionController::class, 'store'])->name('store');
+    Route::get('edit/{question}', [QuestionController::class, 'edit'])->name('edit');
+    Route::put('update/{question}', [QuestionController::class, 'update'])->name('update');
+    Route::delete('delete/{question}', [QuestionController::class, 'delete'])->name('delete');
+});
 
-
-Route::get('/question/list', [QuestionController::class, 'list'])->name('question.list');
-Route::get('/question/insert', [QuestionController::class, 'insert'])->name('question.insert');
-Route::post('/question/store', [QuestionController::class, 'store'])->name('question.store');
-Route::get('/question/edit/{id}', [QuestionController::class, 'edit'])->name('question.edit');
-Route::put('/question/update/{id}', [QuestionController::class, 'update'])->name('question.update');
-Route::delete('/question/delete/{id}', [QuestionController::class, 'delete'])->name('question.delete');
 
 Route::post('ckeditor/upload', [CkeditorController::class, 'upload'])->name('ckeditor.upload');
-
